@@ -39,6 +39,9 @@ p {
     font-size: 16px;
 }
 
+a {
+    text-decoration: none;
+}
 
 .text--purple {
     color: rgb(139, 56, 218);
@@ -106,7 +109,7 @@ nav {
 .nav__link--anchor {
     margin: 0 12px;
     color: rgb(19, 18, 18);
-    text-decoration: none;
+    /* text-decoration: none; removed since generalized on line 43*/
     font-weight: 400;
 }
 
@@ -186,7 +189,7 @@ nav {
 .about-me__link {
     font-size: 24px;
     color: rgb(19, 18, 18);
-    text-decoration: none;
+    /* text-decoration: none; removed since generalized on line 43*/
     padding: 0 16px;
 }
 
@@ -344,7 +347,7 @@ nav {
 .project__description--link {
     font-size: 22px;
     margin-right: 12px;
-    text-decoration: none;
+    /* text-decoration: none; removed since generalized on line 43*/
 }
 
 /* To fix that big space below the last project list */
@@ -353,3 +356,68 @@ nav {
 }
 /* Your welcome */
 
+
+
+/* LEZGO FOOTER */
+
+
+
+footer {
+    background-color: #161616;
+}
+
+.footer__logo--img {
+    width: 100%;
+    max-width: 100px;
+}
+
+.footer__row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 8% 0;
+}
+
+/* Pro tip - If I want me to make them download like PDF's i put "download" encoded beside hrefs target blanks (inside anchor tag) */
+
+.footer__social--link, 
+.footer__copyright, 
+.footer__logo--popper {
+    color: white;
+}
+
+.footer__social--list {
+    margin-bottom: 16px;
+}
+
+.footer__social--list {
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.footer__logo--popper {
+    position: absolute;
+    right: 0;
+    top: 30px;
+    font-weight: 700;
+    opacity: 0;
+    transition: all 400ms ease;
+}
+
+.footer__anchor {
+    position: relative;
+    margin-bottom: 16px;
+}
+
+.footer__anchor:hover .footer__logo--popper {
+    transform: translateX(50px);
+    opacity: 1;
+}
+
+html {
+    scroll-behavior: smooth; 
+    /* For smooth sailing back to top */
+}

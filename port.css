@@ -17,6 +17,8 @@
     max-width: 1000px;
     margin: 120px auto;
 }
+
+
 /* OK ONTO THE GOOD STUFF */
 
 
@@ -41,6 +43,31 @@ p {
 
 a {
     text-decoration: none;
+    position: relative;
+}
+
+.link__hover-effect:after {
+    content: "";
+    position: absolute;
+    height: 3px;
+    background-color: black;
+    width: 0;
+    bottom: -3px;
+    right: 0;
+    transition: all 300ms ease;
+}
+
+.link__hover-effect:hover:after {
+    width: 100%;
+    left: 0;
+}
+
+.link__hover-effect--white:after {
+    background-color: white;
+}
+
+.link__hover-effect--black:after {
+    background-color: black;
 }
 
 .text--purple {
@@ -52,6 +79,14 @@ a {
     margin: 0 auto;
 }
 
+i {
+    transition: opacity 200ms ease-in-out;
+}
+
+i:hover {
+    opacity: 0.6;
+}
+
 .flex1 {
     flex: 1;
 }
@@ -60,10 +95,17 @@ a {
     padding: 50px 0;
 }
 
+html {
+    scroll-behavior: smooth; 
+    /* For smooth sailing back to top */
+}
+
+
 .row {
     width: 100%;
     max-width: 800px;
     margin: 0 auto;
+    padding: 0 16px;
 }
 
 section:nth-child(even) {
@@ -72,7 +114,7 @@ section:nth-child(even) {
 
 .wave {
     display: inline-block;
-    animation: animate-360 2200ms infinite reverse;
+    animation: animate-360 2200ms infinite reverse ease-in-out;
 }
 
 @keyframes animate-360 {
@@ -103,7 +145,7 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    
+    padding: 0 14px;
 }
 
 .nav__link--anchor {
@@ -118,7 +160,7 @@ nav {
     color: white;
     padding: 8px 16px;
     border-radius: 32px;
-    transition: 420ms all ease;
+    transition: 200ms all ease;
 }
 
 .nav__link--anchor-primary:hover {
@@ -166,7 +208,23 @@ nav {
     overflow: hidden;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     margin-bottom: 24px;
+    animation: animate-ppicture 800ms 300ms backwards;
 }
+
+@keyframes animate-ppicture {
+    0% {
+        transform: scale(0);
+    }
+
+    10% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
 .about-me__picture--zoom {
     width: 100%;
 
@@ -178,12 +236,14 @@ nav {
 
 .about-me__info--title {
     margin-bottom: 16px;
+    animation: fade-up 600ms 400ms backwards;
 }
 
 .about-me__info--para {
     font-size: 20px;
     text-align: center;
     margin-bottom: 20px;
+    animation: fade-up 600ms 600ms backwards;
 }
 
 .about-me__link {
@@ -191,6 +251,19 @@ nav {
     color: rgb(19, 18, 18);
     /* text-decoration: none; removed since generalized on line 43*/
     padding: 0 16px;
+    animation: fade-up 600ms 800ms backwards;
+}
+
+@keyframes fade-up {
+    0% {
+        opacity: 0;
+        transform: translateY(80px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .about-me__img--container {
@@ -202,6 +275,29 @@ nav {
 
 .about-me__img {
     width: 100%;
+    animation: fade-in 400ms 600ms backwards ease-in-out;
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+
+    25% {
+        opacity: 0.25;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+
+    75% {
+        opacity: 0.75;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }
 
 
@@ -417,7 +513,66 @@ footer {
     opacity: 1;
 }
 
-html {
-    scroll-behavior: smooth; 
-    /* For smooth sailing back to top */
+
+/* Making the website flexible for small phones, tablets, large smartphones */
+
+@media (max-width: 760px) {
+    nav {
+        height: 60px;
+    }
+
+    h1 {
+        font-size: 26px;
+    }
+
+    .about-me__info--para {
+        font-size: 16px;
+        padding: 0 28px;
+    }
+
+    .languages {
+        width: calc(100% / 2);
+    }
+
+    .section__title {
+        padding: 0 12px;
+    }
+
+    .project__description--para {
+        font-size: 14px;
+    }
+
+    .project__description {
+        left: 26px;
+        padding-right: 26px;
+    }
+}
+
+
+/* Smaller phones i guess */
+
+@media (max-width: 480px) {
+    .nav__link:not(:last-child) {
+        display: none;
+    }
+
+    .project__description--para {
+        display: none;
+    }
+
+    .project__description--links {
+        display: flex;
+        justify-content: center;
+    }
+
+    .project__description--title {
+        font-size: 32px;
+        line-height: 1;
+        text-align: center;
+    }
+
+    .project__description--sub-title {
+        text-align: center;
+        margin: 12px 0;
+    }
 }
